@@ -9,6 +9,16 @@ class ProductTest < ActiveSupport::TestCase
   assert product.errors[:image_url].any?
 end
 
+test "product is not valid without a product = Product.new(:title
+:description
+:price
+:image_url
+unique title - i18n" do => products(:ruby).title, => "yyy",=> 1,=> "fred.gif" )
+assert !product.save
+assert_equal I18n.translate('activerecord.errors.messages.taken'),
+product.errors[:title].join('; ')
+end
+
 test "product price must be positive" do
 product = Product.new(:title => "My Book Title",
 :description => "yyy", :image_url => "zzz.jpg")
